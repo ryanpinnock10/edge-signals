@@ -17,6 +17,7 @@ import {
   fmtPct,
   changeTone,
   ratingLabel,
+  fmtMarketStatus,
 } from "@/lib/stocks";
 import { TrendingUp, TrendingDown, Star, ArrowRight, Gauge } from "lucide-react";
 
@@ -92,7 +93,7 @@ export default function Dashboard() {
         title="Dashboard"
         subtitle={
           snap?.asOf
-            ? `Market ${snap.marketStatus} · data as of ${snap.asOf}`
+            ? `Market ${fmtMarketStatus(snap.marketStatus)} · data as of ${snap.asOf}`
             : "Loading market data"
         }
       />

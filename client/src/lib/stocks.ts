@@ -107,6 +107,17 @@ export function changeTone(v: number): string {
   return "text-muted-foreground";
 }
 
+export function fmtMarketStatus(s: string | null | undefined): string {
+  if (!s) return "";
+  const map: Record<string, string> = {
+    open: "Open",
+    closed: "Closed",
+    pre_market: "Pre-market",
+    after_hours: "After-hours",
+  };
+  return map[s] ?? s.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
 export const METRIC_LABELS: Record<string, string> = {
   price: "Price",
   compositeScore: "Composite Score",
