@@ -1,0 +1,121 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Typecheck & build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run check
+
+      - name: Production build
+        run: npm run build
+
+      - name: Verify build artifacts
+        run: |
+          test -f dist/index.cjs || { echo "::error::dist/index.cjs missing"; exit 1; }
+          test -f dist/public/index.html || { echo "::error::dist/public/index.html missing"; exit 1; }
+          test -f dist/data/snapshot.json || { echo "::error::dist/data/snapshot.json was not copied"; exit 1; }
+          echo "Build artifacts present."
+
+  pipeline:
+    name: Data pipeline & alerts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Rebuild snapshot from sample data
+        working-directory: pipeline
+        run: python3 build_snapshot.py
+
+      - name: Validate snapshot.json
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          d = json.load(open("server/data/snapshot.json"))
+          stocks = d.get("stocks", [])
+          assert len(stocks) == d.get("universeSize"), "universeSize != number of stocks"
+          assert len(stocks) >= 40, f"expected >=40 stocks, got {len(stocks)}"
+          required = {"symbol","price","compositeScore","valueScore","momentumScore",
+                      "analystScore","upsidePct","changePct","rank"}
+          for s in stocks:
+              missing = required - set(s)
+              assert not missing, f"{s.get('symbol')} missing fields: {missing}"
+          # Ranks must be a contiguous 1..N ordering by composite score (desc)
+          ranks = sorted(s["rank"] for s in stocks)
+          assert ranks == list(range(1, len(stocks)+1)), "ranks are not contiguous 1..N"
+          scores = [s["compositeScore"] for s in sorted(stocks, key=lambda x: x["rank"])]
+          assert scores == sorted(scores, reverse=True), "rank order does not match composite score"
+          print(f"snapshot.json OK: {len(stocks)} stocks, asOf={d.get('asOf')}")
+          PY
+
+      - name: Pipeline is reproducible (no drift on re-run)
+        run: |
+          cp server/data/snapshot.json /tmp/run1.json
+          (cd pipeline && python3 build_snapshot.py)
+          python3 - <<'PY'
+          import json
+          a = json.load(open("/tmp/run1.json"))["stocks"]
+          b = json.load(open("server/data/snapshot.json"))["stocks"]
+          ka = [(s["symbol"], s["rank"], s["compositeScore"]) for s in a]
+          kb = [(s["symbol"], s["rank"], s["compositeScore"]) for s in b]
+          assert ka == kb, "pipeline output is not deterministic across runs"
+          print("Pipeline output is deterministic.")
+          PY
+
+      - name: Alert evaluator smoke test
+        run: |
+          python3 - <<'PY'
+          import sqlite3, time, subprocess, json, os
+          # Fresh DB with the alerts schema the app uses.
+          if os.path.exists("data.db"): os.remove("data.db")
+          c = sqlite3.connect("data.db")
+          c.execute('''CREATE TABLE alerts (
+            id INTEGER PRIMARY KEY AUTOINCREMENT, symbol TEXT NOT NULL,
+            metric TEXT NOT NULL, direction TEXT NOT NULL, threshold REAL NOT NULL,
+            active INTEGER NOT NULL DEFAULT 1, last_triggered_at INTEGER,
+            created_at INTEGER NOT NULL)''')
+          # Pick a real symbol and a threshold guaranteed to fire.
+          snap = json.load(open("server/data/snapshot.json"))
+          top = sorted(snap["stocks"], key=lambda x: x["rank"])[0]
+          c.execute("INSERT INTO alerts (symbol,metric,direction,threshold,active,created_at) VALUES (?,?,?,?,1,?)",
+                    (top["symbol"], "price", "above", top["price"] - 1, int(time.time()*1000)))
+          c.commit(); c.close()
+          out = subprocess.run(["python3", "pipeline/evaluate_alerts.py"],
+                               capture_output=True, text=True, check=True).stdout
+          res = json.loads(out)
+          assert res["count"] == 1, f"expected 1 triggered alert, got {res['count']}: {out}"
+          assert res["triggered"][0]["symbol"] == top["symbol"]
+          print("Alert evaluator OK:", out.strip())
+          PY
+
+      - name: Clean up test artifacts
+        if: always()
+        run: rm -f data.db data.db-wal data.db-shm
