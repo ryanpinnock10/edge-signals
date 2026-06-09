@@ -1,0 +1,322 @@
+{
+  "AAPL": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 400.0,
+    "high_price_target": 400.0,
+    "low_price_target": 400.0
+  },
+  "MSFT": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 540.0,
+    "high_price_target": 540.0,
+    "low_price_target": 540.0
+  },
+  "GOOGL": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 450.0,
+    "high_price_target": 450.0,
+    "low_price_target": 450.0
+  },
+  "AMZN": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 320.0,
+    "high_price_target": 320.0,
+    "low_price_target": 320.0
+  },
+  "META": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 810.0,
+    "high_price_target": 810.0,
+    "low_price_target": 810.0
+  },
+  "TSLA": {
+    "consensus_rating": "hold",
+    "total_ratings": 1,
+    "bullish_pct": 0,
+    "avg_price_target": 475.0,
+    "high_price_target": 475.0,
+    "low_price_target": 475.0
+  },
+  "AVGO": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 485.0,
+    "high_price_target": 485.0,
+    "low_price_target": 485.0
+  },
+  "AMD": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 665.0,
+    "high_price_target": 665.0,
+    "low_price_target": 665.0
+  },
+  "NFLX": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 125.0,
+    "high_price_target": 125.0,
+    "low_price_target": 125.0
+  },
+  "CRM": {
+    "consensus_rating": "hold",
+    "total_ratings": 1,
+    "bullish_pct": 0,
+    "avg_price_target": 187.0,
+    "high_price_target": 187.0,
+    "low_price_target": 187.0
+  },
+  "ORCL": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 245.0,
+    "high_price_target": 245.0,
+    "low_price_target": 245.0
+  },
+  "ADBE": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 350.0,
+    "high_price_target": 350.0,
+    "low_price_target": 350.0
+  },
+  "UBER": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 100.0,
+    "high_price_target": 100.0,
+    "low_price_target": 100.0
+  },
+  "SHOP": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 145.0,
+    "high_price_target": 145.0,
+    "low_price_target": 145.0
+  },
+  "PLTR": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 225.0,
+    "high_price_target": 225.0,
+    "low_price_target": 225.0
+  },
+  "COST": {
+    "consensus_rating": "hold",
+    "total_ratings": 1,
+    "bullish_pct": 0,
+    "avg_price_target": 1000.0,
+    "high_price_target": 1000.0,
+    "low_price_target": 1000.0
+  },
+  "JPM": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 340.0,
+    "high_price_target": 340.0,
+    "low_price_target": 340.0
+  },
+  "V": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 371.0,
+    "high_price_target": 371.0,
+    "low_price_target": 371.0
+  },
+  "MA": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 631.0,
+    "high_price_target": 631.0,
+    "low_price_target": 631.0
+  },
+  "LLY": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 1251.0,
+    "high_price_target": 1251.0,
+    "low_price_target": 1251.0
+  },
+  "UNH": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 460.0,
+    "high_price_target": 460.0,
+    "low_price_target": 460.0
+  },
+  "WMT": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 145.0,
+    "high_price_target": 145.0,
+    "low_price_target": 145.0
+  },
+  "HD": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 378.0,
+    "high_price_target": 378.0,
+    "low_price_target": 378.0
+  },
+  "PG": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 172.0,
+    "high_price_target": 172.0,
+    "low_price_target": 172.0
+  },
+  "XOM": {
+    "consensus_rating": "hold",
+    "total_ratings": 1,
+    "bullish_pct": 0,
+    "avg_price_target": 175.0,
+    "high_price_target": 175.0,
+    "low_price_target": 175.0
+  },
+  "CVX": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 230.0,
+    "high_price_target": 230.0,
+    "low_price_target": 230.0
+  },
+  "KO": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 89.0,
+    "high_price_target": 89.0,
+    "low_price_target": 89.0
+  },
+  "PEP": {
+    "consensus_rating": "hold",
+    "total_ratings": 1,
+    "bullish_pct": 0,
+    "avg_price_target": 150.0,
+    "high_price_target": 150.0,
+    "low_price_target": 150.0
+  },
+  "DIS": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 126.0,
+    "high_price_target": 126.0,
+    "low_price_target": 126.0
+  },
+  "BA": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 260.0,
+    "high_price_target": 260.0,
+    "low_price_target": 260.0
+  },
+  "CAT": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 990.0,
+    "high_price_target": 990.0,
+    "low_price_target": 990.0
+  },
+  "MRVL": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 275.0,
+    "high_price_target": 275.0,
+    "low_price_target": 275.0
+  },
+  "SMCI": {
+    "consensus_rating": "hold",
+    "total_ratings": 1,
+    "bullish_pct": 0,
+    "avg_price_target": 44.0,
+    "high_price_target": 44.0,
+    "low_price_target": 44.0
+  },
+  "MU": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 1220.0,
+    "high_price_target": 1220.0,
+    "low_price_target": 1220.0
+  },
+  "INTC": {
+    "consensus_rating": "hold",
+    "total_ratings": 1,
+    "bullish_pct": 0,
+    "avg_price_target": 100.0,
+    "high_price_target": 100.0,
+    "low_price_target": 100.0
+  },
+  "QCOM": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 280.0,
+    "high_price_target": 280.0,
+    "low_price_target": 280.0
+  },
+  "TXN": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 1,
+    "bullish_pct": 100,
+    "avg_price_target": 370.0,
+    "high_price_target": 370.0,
+    "low_price_target": 370.0
+  },
+  "NVDA": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 31,
+    "bullish_pct": 96.8,
+    "avg_price_target": 308.81,
+    "high_price_target": 500,
+    "low_price_target": 215
+  },
+  "JNJ": {
+    "consensus_rating": "buy",
+    "total_ratings": 18,
+    "bullish_pct": 61.1,
+    "avg_price_target": 243.39,
+    "high_price_target": 280,
+    "low_price_target": 208
+  },
+  "GE": {
+    "consensus_rating": "strong_buy",
+    "total_ratings": 7,
+    "bullish_pct": 100,
+    "avg_price_target": 366.14,
+    "high_price_target": 405,
+    "low_price_target": 335
+  }
+}
